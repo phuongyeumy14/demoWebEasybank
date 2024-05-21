@@ -5,6 +5,7 @@
 
 @layer components {
     .button {
+        color: white;
         border-radius: 9999px;
         background-image: linear-gradient(to left, var(--tw-gradient-stops));
         --tw-gradient-from: hsl(192, 70%, 51%);
@@ -14,21 +15,10 @@
         padding-right: 2rem;
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
-        --tw-text-opacity: 1;
-        color: rgba(255, 255, 255, var(--tw-text-opacity));
         cursor: pointer;
         line-height: inherit;
         transition-duration: 300ms;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        font-family: inherit;
-        font-size: 100%;
-        font-weight: inherit;
-        line-height: inherit;
-        text-align: center;
-        text-decoration: none;
-        vertical-align: middle;
-        border: 0;
-        border-radius: 9999px;
         appearance: none;
     }
 
@@ -41,19 +31,25 @@
         cursor: pointer;
         align-items: center;
         border-bottom-width: 4px;
+        border-bottom-width: 4px;
+        --tw-text-opacity: 1;
+        color: rgba(0, 0, 0, var(--tw-text-opacity));
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         border-color: transparent;
+        border-bottom-width: 4px;
+        text-shadow: 5px 10px 15px #0e0d0d;
 
     }
 
     .link:hover {
-        text-align: center;
-        color: #000;
-        background-color: #fff;
+        color: #918b9b;
         border-color: #42ea28;
         border-bottom-width: 4px;
         border-color: #42ea28;
         
 
     }
+    
 
 
