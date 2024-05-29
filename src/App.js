@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-
 const Features = () => {
+  const [visible, setVisible] = useState(false);
+  const handleOpenMenu = () => {
+    setVisible(!visible);
+    console.log(visible);
+  };
+
   return (
     <div className="font-['Public_Sans'] p-0 m-0">
-      <div className="hidden md:flex justify-between h-24 px-10 xl:px-28 items-center max-w-screen-2xl m-auto bg-gray-200">
+      <div className="hidden md:flex justify-between h-24 px-10 xl:px-28 items-center bg-gray-200">
         <img src="images/logo_1.png" alt="" className="object-contain h-6" />
-        <ul class="flex gap-4 lg:gap-8 text-gray-500 h-full items-stretch">
+        <ul class="flex gap-8 text-gray-500">
           <li className="link">
             <a href="#">Home</a>
           </li>
@@ -28,7 +32,53 @@ const Features = () => {
           Request Invite
         </button>
       </div>
-      <div className="grid grid-cols-1 bg-primary-light pl-0 md:pl-10 xl:pl-28 md:grid-cols-2 ">
+      <div
+        className="flex md:hidden justify-between h-24 px-10 items-center bg-gray-200"
+        onClick={handleOpenMenu}
+      >
+        <img src="images/logo_1.png" alt="" className="object-contain h-6" />
+        <img
+          src="images/icon-hamburger.svg"
+          alt=""
+          className="h-3 cursor-pointer"
+        />
+      </div>
+      {visible && (
+        <div className="fixed inset-0 z-10">
+          <div className="fixed inset-0 bg-gradient-to-b from-black to-white duration-300 ease-in-out opacity-50"></div>
+          <div className="">
+            <div
+              id="show-menu"
+              className="w-full absolute z-20 top-20 justify-center flex"
+            >
+              <img
+                src="images/icon-close.svg"
+                alt=""
+                className="cursor-pointer w-8 h-8 right-5 top-1 p-2 absolute z-10 hover:bg-gray-200 rounded-full"
+                onClick={handleOpenMenu}
+              />
+              <ul className="w-4/5 flex flex-col items-center gap-4 py-8 text-gray-500 text-lg font-medium">
+                <li className="link">
+                  <a href="#">Home</a>
+                </li>
+                <li className="link">
+                  <a href="#">About</a>
+                </li>
+                <li className="link">
+                  <a href="#">Contact</a>
+                </li>
+                <li className="link">
+                  <a href="#">Blog</a>
+                </li>
+                <li className="link">
+                  <a href="#">Careers</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="grid grid-cols-1 md:pl-10 xl:pl-28 md:grid-cols-2 ">
         <div className="my-auto px-10 md:px-0 py-14 md:py-0 order-2 md:order-none text-center md:text-left">
           <h1 className="text-5xl lg:text-7xl pb-9">
             Next generation digital banking
@@ -42,11 +92,11 @@ const Features = () => {
             Request Invite
           </button>
         </div>
-        <div className="bg-[url('./image-background.png')] bg-bg-sm md:bg-bg-lg h-96 md:h-screen bg-cover relative overflow-hidden order-1 md:order-none ">
+        <div className="bg-[url('./image-background.png')] h-96 md:h-screen bg-cover relative overflow-hidden order-1 md:order-none ">
           <img
             src="images/image-mockups.png"
             alt=""
-            className="bottom-0 absolute md:left-28 "
+            className="bottom-0 absolute md:left-28"
           />
         </div>
       </div>
@@ -60,7 +110,7 @@ const Features = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5">
-            <div className="flex flex-col items-center md:items-start lg:py-0">
+            <div className="flex flex-col items-center md:items-start">
               <img src="images/icon-online.svg" alt="" />
               <h3 className="text-2xl py-6">Online Banking</h3>
               <p className="text-gray-500 text-center md:text-left">
@@ -68,7 +118,7 @@ const Features = () => {
                 of your finances wherever you are in the world.
               </p>
             </div>
-            <div className="flex flex-col items-center md:items-start lg:py-0">
+            <div className="flex flex-col items-center md:items-start">
               <img src="images/icon-budgeting.svg" alt="" />
               <h3 className="text-2xl py-6">Simple Budgeting</h3>
               <p className="text-gray-500 text-center md:text-left">
@@ -76,7 +126,7 @@ const Features = () => {
                 when you’re close to hitting your limits.
               </p>
             </div>
-            <div className="flex flex-col items-center md:items-start lg:py-0">
+            <div className="flex flex-col items-center md:items-start">
               <img src="images/icon-onboarding.svg" alt="" />
               <h3 className="text-2xl py-6">Fast Onboarding</h3>
               <p className="text-gray-500 text-center md:text-left">
@@ -84,7 +134,7 @@ const Features = () => {
                 start taking control of your finances right away.
               </p>
             </div>
-            <div className="flex flex-col items-center md:items-start lg:py-0">
+            <div className="flex flex-col items-center md:items-start">
               <img src="images/icon-api.svg" alt="" />
               <h3 className="text-2xl py-6">Open API</h3>
               <p className="text-gray-500 text-center md:text-left">
@@ -95,12 +145,12 @@ const Features = () => {
           </div>
         </div>
       </>
-      <div className="bg-primary-light p-10 xl:p-28">
+      <div className="p-10 xl:p-28">
         <h2 className="text-4xl pb-8 text-center md:text-left">
           Latest Articles
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
-          <div className="bg-white rounded-lg pb-10 md:pb-0 hover:shadow-lg transition duration-300">
+          <div className="pb-10 md:pb-0 hover:shadow-lg duration-300" e>
             <img
               src="images/image-currency.jpg"
               alt=""
@@ -108,7 +158,7 @@ const Features = () => {
             />
             <div className="p-4">
               <p className="text-gray-500 text-xs pb-3">By Claire Robinson</p>
-              <h3 className="text-md font-semibold pb-3 hover: ease-in-out cursor-pointer ease-in-out cursor-pointer">
+              <h3 className=" font-semibold pb-3 hover: ease-in-out cursor-pointer">
                 Receive money in any currency with no fees
               </h3>
               <p className="text-sm text-gray-500">
@@ -117,7 +167,7 @@ const Features = () => {
               </p>
             </div>
           </div>
-          <div className="bg-white rounded-lg pb-10 md:pb-0 hover:shadow-lg transition duration-300">
+          <div className="pb-10 md:pb-0 hover:shadow-lg duration-300">
             <img
               src="images/image-restaurant.jpg"
               alt=""
@@ -125,7 +175,7 @@ const Features = () => {
             />
             <div className="p-4">
               <p className="text-gray-500 text-xs pb-3">By Wilson Hutton</p>
-              <h3 className="text-md font-semibold pb-3 hover: ease-in-out cursor-pointer ease-in-out cursor-pointer">
+              <h3 className=" font-semibold pb-3 hover: ease-in-out cursor-pointer">
                 Treat yourself without worrying about money
               </h3>
               <p className="text-sm text-gray-500">
@@ -134,7 +184,7 @@ const Features = () => {
               </p>
             </div>
           </div>
-          <div className="bg-white rounded-lg pb-10 md:pb-0 hover:shadow-lg transition duration-500">
+          <div className="pb-10 md:pb-0 hover:shadow-lg duration-500">
             <img
               src="images/image-plane.jpg"
               alt=""
@@ -142,7 +192,7 @@ const Features = () => {
             />
             <div className="p-4">
               <p className="text-gray-500 text-xs pb-3">By Wilson Hutton</p>
-              <h3 className="text-md font-semibold pb-3 hover: ease-in-out cursor-pointer ease-in-out cursor-pointer">
+              <h3 className=" font-semibold pb-3 hover: ease-in-out cursor-pointer">
                 Take your Easybank card wherever you go
               </h3>
               <p className="text-sm text-gray-500">
@@ -151,7 +201,7 @@ const Features = () => {
               </p>
             </div>
           </div>
-          <div className="bg-white rounded-lg pb-10 md:pb-0 hover:shadow-lg transition duration-300">
+          <div className="pb-10 md:pb-0 hover:shadow-lg duration-300">
             <img
               src="images/image-confetti.jpg"
               alt=""
@@ -159,7 +209,7 @@ const Features = () => {
             />
             <div className="p-4">
               <p className="text-gray-500 text-xs pb-3">By Claire Robinson</p>
-              <h3 className="text-md font-semibold pb-3 hover: ease-in-out cursor-pointer ease-in-out cursor-pointer">
+              <h3 className=" font-semibold pb-3 hover: ease-in-out cursor-pointer">
                 Our invite-only Beta accounts are now live!
               </h3>
               <p className="text-sm text-gray-500">
@@ -171,7 +221,7 @@ const Features = () => {
           </div>
         </div>
       </div>
-      <div className="bg-sky-950 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-10 xl:px-28 py-7">
+      <div className="bg-sky-950 text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-10 py-7 justify-items-center">
         <div>
           <img
             src="images/logo-white.svg"
@@ -240,7 +290,7 @@ const Features = () => {
         </div>
         <div className="flex flex-col items-center md:col-span-2 lg:col-auto lg:items-end gap-5 md:mt-10 ">
           <button className="button">Request Invite</button>
-          <p className="text-gray-300">© Easybank. All Rights Reserved</p>
+          <p className="text-gray-500">© Easybank. All Rights Reserved</p>
         </div>
       </div>
     </div>
